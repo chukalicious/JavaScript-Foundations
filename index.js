@@ -20,8 +20,6 @@ Create another variable called `periods` and give it the value of years*12.
  const monthlyInterestRate = interestRate / 12;
  const periods = years * 12;
 
-
-
 // 🏡 Task 2: Harder Math
 /* Create your calculator! Use the formula in the ReadMe to run calculations on your numbers. Save the final value into a variable called monthlyRate.
 
@@ -34,12 +32,9 @@ When your math is correct, monthlyRate will equal 1073.64
 
 //M = P [ I ( 1 + I )^N ] / [ ( 1 + I )^N – 1 ]
 
-
-
 let numerator = monthlyInterestRate * Math.pow(1 + monthlyInterestRate, periods);
 let denominator = Math.pow(1+ monthlyInterestRate, periods) - 1;  
 let intRateCalc = numerator/denominator; 
-
 
 // 🏡 Task 3: Function
 /* Create a function called `mortgageCalculator` that combines all of the steps from task 1 and 2 and returns a sentence "{Name}, your monthly rate is ${monthlyRate}"
@@ -104,7 +99,6 @@ function mortgageCalculatorThree(p, i, n, c) {
 }
 mortgageCalculatorThree(200000, .05, 30, 800);
 
-
 // 🏡 Task 6: Loops
 /* Write a new function called variableInterestRate. This function should be the same as mortgageCalculator, except it should console.log the monthly payment for 10 different interest rates at 0.5% increments plus or minus 2% from the inputted interest rate. Complete these calculations using a for loop.
 
@@ -121,7 +115,6 @@ For example, variableInterestRate(200000, 0.04, 30) should console.log:
 "{Name}, with an interest rate of 0.06, your monthly rate is $1199"
 */
 
-
 function mortgageCalculatorFour(name) {
     for (var i = .02; i <= .06; i += .005) { 
         let monthlyInterestRate = i / 12;
@@ -132,7 +125,7 @@ function mortgageCalculatorFour(name) {
         console.log(`${name}, with an interest rate of ${i.toFixed(3)}, your monthly rate is $${Math.round(monthlyRate)}`);  
     }
 }
-mortgageCalculatorFour('Kat') 
+mortgageCalculatorFour('Kat');
 
 
 // 🌟🌟🌟 STRETCH 🌟🌟🌟//
@@ -147,9 +140,9 @@ mortgageCalculatorFour('Kat')
 
 /* 🏡 Explore using `window.prompt()` to allow a user to input parameters in the browser */
 
-let p = prompt('what\'s the principal on your loan? '); 
-let i = prompt('what\'s the interest on your loan?'); 
-let n = prompt('for how many years is your loan'); 
+let p = prompt('What\'s the principal on your loan? '); 
+let i = prompt('What\'s the interest on your loan?'); 
+let n = prompt('For how many years is your loan?'); 
 
 function mortgageCalculatorPrompt(p, i, n) {
     let monthlyInterestRate = i / 12;
@@ -159,6 +152,6 @@ function mortgageCalculatorPrompt(p, i, n) {
     let monthlyRate = p * (numerator/denominator); 
     return monthlyRate/* .toFixed(2) */; 
 }
-console.log(`Your monthly rate is $${mortgageCalculatorPrompt(p,i,n).toFixed(2)}`)
+console.log(`Your monthly rate is $${Math.round(mortgageCalculatorPrompt(p,i,n))}`);
 
 /* 🏡  Refactor your `variableInterestRate()` function to accept an array of interest rates (make sure to copy and paste as to not lose your work!) */
