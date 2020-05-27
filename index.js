@@ -102,7 +102,7 @@ function mortgageCalculatorThree(p, i, n, c) {
         return monthlyRate/* .toFixed(2) */;
     }
 }
-mortgageCalculatorThree(200000, .05, 30, 500);
+mortgageCalculatorThree(200000, .05, 30, 800);
 
 
 // 🏡 Task 6: Loops
@@ -147,5 +147,18 @@ mortgageCalculatorFour('Kat')
 
 /* 🏡 Explore using `window.prompt()` to allow a user to input parameters in the browser */
 
+let p = prompt('what\'s the principal on your loan? '); 
+let i = prompt('what\'s the interest on your loan?'); 
+let n = prompt('for how many years is your loan'); 
+
+function mortgageCalculatorPrompt(p, i, n) {
+    let monthlyInterestRate = i / 12;
+    let periods = n * 12;       
+    let numerator = monthlyInterestRate * Math.pow(1 + monthlyInterestRate, periods);
+    let denominator = Math.pow(1 + monthlyInterestRate, periods) -1; 
+    let monthlyRate = p * (numerator/denominator); 
+    return monthlyRate/* .toFixed(2) */; 
+}
+console.log(`Your monthly rate is $${mortgageCalculatorPrompt(p,i,n).toFixed(2)}`)
 
 /* 🏡  Refactor your `variableInterestRate()` function to accept an array of interest rates (make sure to copy and paste as to not lose your work!) */
