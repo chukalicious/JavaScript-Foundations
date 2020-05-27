@@ -10,8 +10,6 @@ const years = 30;
 const name = "Kat"; 
 
 
-
-
 // 🏡 Task 1.5: Simple Math
 /* To create a monthly mortgage rate calculator, we need to know the number of years in months and the monthly interest rate. 
 
@@ -37,12 +35,11 @@ When your math is correct, monthlyRate will equal 1073.64
 //M = P [ I ( 1 + I )^N ] / [ ( 1 + I )^N – 1 ]
 
 
-let innerNumerator = 1 + monthlyInterestRate; 
-let numerator = monthlyInterestRate * Math.pow(innerNumerator, periods).toFixed(6);
-let innerDenominator = 1 + monthlyInterestRate; 
-let denominator = Math.pow(innerDenominator, periods) - 1; 
 
- 
+let numerator = monthlyInterestRate * Math.pow(1 + monthlyInterestRate, periods);
+let denominator = Math.pow(1+ monthlyInterestRate, periods) - 1;  
+let intRateCalc = numerator/denominator; 
+
 
 // 🏡 Task 3: Function
 /* Create a function called `mortgageCalculator` that combines all of the steps from task 1 and 2 and returns a sentence "{Name}, your monthly rate is ${monthlyRate}"
@@ -51,16 +48,10 @@ If your name is `Oscar` mortgageCalculator() should return "Oscar, your monthly 
 */
 
 function mortgageCalculator(name) {
-    let division = numerator/denominator; 
-    let monthlyRate = principal * division; //.toFixed(2)
+    let monthlyRate = principal * intRateCalc; //.toFixed(2)
     return `${name}, your monthly rate is ${monthlyRate.toFixed(2)}`; 
-
 }
-
 mortgageCalculator('Kat')
-
-
-
 
 // 🏡 Task 4: Arguments and Parameters
 /* Substitute the variables in your functions for parameters such that you can substitute `P`, `I`, and `N` when you call the function.
@@ -69,8 +60,13 @@ For example,
 mortgageCalculator(200000, 0.05, 30); <-- should return 1,073.64
 */
 
-let P = principal; 
-let I = interestRate; 
+function mortgageCalculator(p, i, n) {
+    let moInt = i / 12;
+    let noOfPayments = n * 12;        let norator = moInt * Math.pow(1 + moInt, noOfPayments);
+    let denator = Math.pow(1 + moInt, noOfPayments); 
+    let monthlyRate = p * (norator/denator); 
+    return monthlyRate; 
+}
 
 
 
