@@ -51,7 +51,7 @@ function mortgageCalculatorOne(name) {
     let monthlyRate = principal * intRateCalc; //.toFixed(2)
     return `${name}, your monthly rate is ${monthlyRate.toFixed(2)}`; 
 }
-mortgageCalculatorOne('Kat')
+mortgageCalculatorOne('Kat');
 
 // 🏡 Task 4: Arguments and Parameters
 /* Substitute the variables in your functions for parameters such that you can substitute `P`, `I`, and `N` when you call the function.
@@ -68,7 +68,7 @@ function mortgageCalculatorTwo(p, i, n) {
     let monthlyRate = p * (numerator/denominator); 
     return monthlyRate/* .toFixed(2) */; 
 }
-mortgageCalculatorTwo(200000, .05, 30);
+mortgageCalculatorTwo(200000, 0.02, 30); 
 
 // 🏡 Task 5: Conditionals
 /* Add another paramter to your function called credit score. This parameter will be a number between 0 and 800 (a credit score).
@@ -102,9 +102,7 @@ function mortgageCalculatorThree(p, i, n, c) {
         return monthlyRate/* .toFixed(2) */;
     }
 }
-console.log(mortgageCalculatorThree(200000, .05, 30, 799)); 
-
-
+mortgageCalculatorThree(200000, .05, 30, 500);
 
 
 // 🏡 Task 6: Loops
@@ -124,6 +122,17 @@ For example, variableInterestRate(200000, 0.04, 30) should console.log:
 */
 
 
+function mortgageCalculatorFour(name) {
+    for (var i = .02; i <= .06; i += .005) { 
+        let monthlyInterestRate = i / 12;
+        let periods = 30 * 12;       
+        let numerator = monthlyInterestRate * Math.pow(1 + monthlyInterestRate, periods);
+        let denominator = Math.pow(1 + monthlyInterestRate, periods) -1; 
+        let monthlyRate = 200000 * (numerator/denominator); 
+        console.log(`${name}, with an interest rate of ${i.toFixed(3)}, your monthly rate is $${Math.round(monthlyRate)}`);  
+    }
+}
+mortgageCalculatorFour('Kat') 
 
 
 // 🌟🌟🌟 STRETCH 🌟🌟🌟//
