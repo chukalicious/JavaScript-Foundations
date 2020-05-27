@@ -47,11 +47,11 @@ let intRateCalc = numerator/denominator;
 If your name is `Oscar` mortgageCalculator() should return "Oscar, your monthly rate is 1073.64"
 */
 
-function mortgageCalculator(name) {
+function mortgageCalculatorOne(name) {
     let monthlyRate = principal * intRateCalc; //.toFixed(2)
     return `${name}, your monthly rate is ${monthlyRate.toFixed(2)}`; 
 }
-mortgageCalculator('Kat')
+mortgageCalculatorOne('Kat')
 
 // 🏡 Task 4: Arguments and Parameters
 /* Substitute the variables in your functions for parameters such that you can substitute `P`, `I`, and `N` when you call the function.
@@ -60,7 +60,7 @@ For example,
 mortgageCalculator(200000, 0.05, 30); <-- should return 1,073.64
 */
 
-function mortgageCalculator(p, i, n) {
+function mortgageCalculatorTwo(p, i, n) {
     let monthlyInterestRate = i / 12;
     let periods = n * 12;       
     let numerator = monthlyInterestRate * Math.pow(1 + monthlyInterestRate, periods);
@@ -68,16 +68,41 @@ function mortgageCalculator(p, i, n) {
     let monthlyRate = p * (numerator/denominator); 
     return monthlyRate/* .toFixed(2) */; 
 }
-mortgageCalculator(200000, .05, 30); 
-
-
-
+mortgageCalculatorTwo(200000, .05, 30);
 
 // 🏡 Task 5: Conditionals
 /* Add another paramter to your function called credit score. This parameter will be a number between 0 and 800 (a credit score).
 
 Then, add control flow within your function such that IF creditScore is above 740, interest rate drops by 0.5%, if credit score is below 660, interest rate increases by 0.5% and if credit score is anywhere between 660 and 740 interest rate doesn't change.
 */
+
+function mortgageCalculatorThree(p, i, n, c) {
+    if( c >= 740 && c <= 800) {
+        i = i - (i * .05); 
+        let monthlyInterestRate = i / 12;
+        let periods = n * 12;       
+        let numerator = monthlyInterestRate * Math.pow(1 + monthlyInterestRate, periods);
+        let denominator = Math.pow(1 + monthlyInterestRate, periods) -1; 
+        let monthlyRate = p * (numerator/denominator); 
+        return monthlyRate/* .toFixed(2) */; 
+    } else if (c <= 660) {
+        i = i + (i * .05);
+        let monthlyInterestRate = i / 12;
+        let periods = n * 12;       
+        let numerator = monthlyInterestRate * Math.pow(1 + monthlyInterestRate, periods);
+        let denominator = Math.pow(1 + monthlyInterestRate, periods) -1; 
+        let monthlyRate = p * (numerator/denominator); 
+        return monthlyRate/* .toFixed(2) */;
+    } else {
+        let monthlyInterestRate = i / 12;
+        let periods = n * 12;       
+        let numerator = monthlyInterestRate * Math.pow(1 + monthlyInterestRate, periods);
+        let denominator = Math.pow(1 + monthlyInterestRate, periods) -1; 
+        let monthlyRate = p * (numerator/denominator); 
+        return monthlyRate/* .toFixed(2) */;
+    }
+}
+console.log(mortgageCalculatorThree(200000, .05, 30, 799)); 
 
 
 
